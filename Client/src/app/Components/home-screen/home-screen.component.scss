@@ -1,0 +1,72 @@
+@import '../../Styles/buttons.scss';
+
+:host {
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.image_background {
+    background-image: url('../../../assets/HotelImages/Image\ 2.jpg'); /* Replace 'path_to_your_image.jpg' with your image URL */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 500px; /* Adjust the height as needed */
+}
+
+.tag_line_container  {
+
+    justify-content: center;
+    display: flex;
+    position: relative;
+    top: 18%;
+
+    .tag_line {
+        margin: 0px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 50px;
+        color: $deepSeaBlue;
+    }
+}
+
+::ng-deep .booking-container {
+    top: 22%;
+    position: relative;
+    margin: 20px 150px;
+
+    .transparent_layer {
+        background-color: rgb(255, 255, 255);
+        opacity: 0.9;
+        width: 98%;
+        mat-form-field {
+            margin: 15px;
+            .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+                display: none;
+            }
+
+            mat-label {
+                mat-icon {
+                    position: relative;
+                    height: 20px;
+                    width: 28px;
+                    font-size: 22px;
+                }
+
+                span {
+                    bottom: 3px;
+                    position: relative;
+                }
+            }
+            
+        }
+
+        .check_availability_button {
+            height: 55px !important;
+            bottom: 2px;
+            width: 222px;
+            font-size: 16px;
+        }
+    }
+    
+}
+}

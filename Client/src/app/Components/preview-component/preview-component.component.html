@@ -1,0 +1,80 @@
+<div class="container">
+    <h1 class="preview-text">Booking Summary</h1>
+    <article>
+        <section class="card" *ngFor="let room of roomData.selectedRoomData, let i=index">
+          <div class="text-content">
+            <div class="general-content">
+                <h3>{{room.type}} {{room.view}}</h3>
+                <p>{{room.description}}</p>
+                <div class="unavailable-message">
+                    <h4>No. of Rooms: <b>{{room.selectedCount}}</b></h4>
+                </div>
+            </div>
+            <div class="services-price-content">
+                <div class="services">
+                    <h3>Services</h3>
+                  <div class="grid-container">
+                    <div class="grid-item" *ngFor="let row of getRows(room.includedServices, 4)">
+                      <div class="grid-inner-item" *ngFor="let item of row">
+                        <span class="material-symbols-outlined">
+                          {{getIcon(item)}}
+                          </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="prices">
+                    <h3>€{{getRoomPrice(room)}}</h3>
+                    <p>inclusive of add-on services cost<sup>*</sup></p>
+                </div>
+            </div>
+            
+          </div>
+          <div class="visual">
+            <img src="../../../assets/HotelImages/{{room.image}}" alt="" />
+          </div>
+        </section> 
+    </article>
+
+    <div class="payment-info-section">
+      <div class="dates-count-section">
+        <div class="check-in-details">
+          <div class="dates">
+            <h3>Check-in</h3>
+            <p>{{roomData.enquiryDetails.checkInDate}}</p>
+          </div>
+          <div class="dates">
+            <h3>Check-out</h3>
+            <p>{{roomData.enquiryDetails.checkOutDate}}</p>
+          </div>
+        </div>
+        <div class="guest-count-details">
+          <div class="dates">
+            <h3>Adult</h3>
+            <p>{{roomData.enquiryDetails.adults}}</p>
+          </div>
+          <div class="dates">
+            <h3>Child</h3>
+            <p>{{roomData.enquiryDetails.child}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="total-pricing-section">
+        <div class="dates">
+          <h3 style="font-weight: 500;">Total Fare</h3>
+          <p class="total-price">€ {{totalRoomPrice}}</p>
+          <p><i>+ € {{totalServiceCharge | number : '1.2-2'}} additional tax</i></p>
+        </div>
+      </div>
+      <div class="policy-section" style="width: 36%; cursor: pointer;">
+        <p (click)="openPopuphotel()"><u><i>Terms of Service</i></u></p>
+        <p (click)="openPopupcancel()"><u><i>Refund and Cancellation Policy</i></u></p>
+      </div>
+    </div>
+
+    <div class="action-items">
+      <button mat-raised-button class="button-secondary" routerLink="/viewRooms">Back</button>
+      <button mat-raised-button class="button-success" (click)="openGuestDetailsDialog()">Proceed</button>
+    </div>
+</div>

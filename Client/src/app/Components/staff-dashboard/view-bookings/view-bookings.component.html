@@ -1,0 +1,73 @@
+<mat-form-field appearance="outline">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- First Name Column -->
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+  
+    <!--Last Name Column -->
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+  
+    <!-- Phone no. Column -->
+    <ng-container matColumnDef="phone_no">
+      <th mat-header-cell *matHeaderCellDef> Phone no. </th>
+      <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
+    </ng-container>
+
+    <!-- Check-In Column -->
+    <ng-container matColumnDef="checkIn">
+      <th mat-header-cell *matHeaderCellDef> Check-In  </th>
+      <td mat-cell *matCellDef="let element"> {{element.checkinDate}} </td>
+    </ng-container>
+
+    <!-- Check-Out Column -->
+    <ng-container matColumnDef="checkOut">
+        <th mat-header-cell *matHeaderCellDef> Check-Out </th>
+        <td mat-cell *matCellDef="let element">{{element.checkoutDate}} </td>
+      </ng-container>
+
+      <!-- No. of Rooms Column -->
+    <ng-container matColumnDef="roomCount">
+      <th mat-header-cell *matHeaderCellDef> No. of Rooms </th>
+      <td mat-cell *matCellDef="let element">{{element.roomCount}}</td>
+    </ng-container>
+
+    <!-- Total Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Total Price </th>
+      <td mat-cell *matCellDef="let element">{{element.totalPrice}}</td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <a class="pointer" data-item='Edit' (click)="addService(element)">
+                <mat-icon aria-hidden="false" aria-label="Edit icon" fontIcon="create"></mat-icon>
+            </a> 
+        </td>
+      </ng-container>
+
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20]"
+                 showFirstLastButtons>
+  </mat-paginator>
+  

@@ -1,0 +1,19 @@
+@import '../../Styles/buttons.scss';
+
+.login-form {
+    display: block;
+
+    mat-form-field {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.register-link {
+    color: $deepOceanBlue;
+    cursor: pointer;
+}
+
+.action-buttons {
+    float: right
+}

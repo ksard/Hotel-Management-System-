@@ -1,0 +1,71 @@
+@import '../../Styles/buttons.scss';
+@import '../../Styles/colors.scss';
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../../assets/HotelImages/Image\ 3.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.payment-form {
+    max-width: 400px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0px 50px 100px -20px rgba(50, 50, 93, 0.25), 0px 30px 60px -30px rgba(0, 0, 0, 0.3), inset 0px -2px 6px 0px rgba(10, 37, 64, 0.35);
+    border-radius: 10px;
+    top: 38px;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: black;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #179CD8;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 5px;
+}
+
+.payment-options {
+    margin-bottom: 20px;
+}
+
+.pay-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: $success;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+    background-color: $success;
+}

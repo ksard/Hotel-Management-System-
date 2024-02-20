@@ -1,0 +1,33 @@
+@import '../Styles/colors.scss';
+
+.button-success {
+    color: white !important;
+    background-color: $success !important;
+}
+
+.button-warning {
+    color: white !important;
+    background-color: $warning !important;
+}
+
+.button-danger {
+    color: white !important;
+    background-color: $danger !important;
+}
+
+.button-primary {
+    color: white !important;
+    background-color: $primary_button !important;
+}
+
+.button-secondary {
+    color: white !important;
+    background-color: $secondary_button !important;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999 !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}

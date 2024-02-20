@@ -1,0 +1,12 @@
+@import '../../../../Styles/buttons.scss';
+
+.user-actions {
+    display: grid;
+    button {
+        margin: 5px !important;
+    }
+}
+
+.mat-mdc-dialog-actions {
+    justify-content: end !important;
+}

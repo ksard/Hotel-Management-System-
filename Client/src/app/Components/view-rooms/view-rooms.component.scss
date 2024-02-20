@@ -1,0 +1,256 @@
+@import '../../Styles/buttons.scss';
+
+:host {
+
+section.card {
+    background:#f6f6f6;
+    border-radius:24px 24px 24px 48px;
+    padding:48px 48px 48px 308px;
+    margin:84px 0;
+    width:60vw;
+    max-width:920px;
+    min-width:640px;
+    display:flex;
+    flex-direction:row;
+    align-self:flex-start;
+    position:relative;
+    box-shadow:
+      5px 0 0 0 fade(#ccc,30%),
+      -5px 0 0 0 fade(#ccc,30%),
+      0 5px 0 0 fade(#ccc,30%);
+    .text-content {
+      display: -webkit-box;
+      flex-direction:column;
+      width:100%;
+
+      .general-content {
+        width: 70%;
+
+        h3 {
+            margin:0;
+            font-size:1.5em;
+            width: 100%;
+          }
+          p {
+            margin:16px 0 24px;
+            max-width:64ch;
+          }
+          
+      }
+
+      .services-price-content {
+        width: 30%;
+
+        h3 {
+            margin:0;
+            font-size:1.5em;
+            max-width:20ch;
+          }
+          p {
+            margin:16px 0 24px;
+            max-width:64ch;
+          }
+
+          .services {
+            height: 70%;
+            .icon-holder {
+                width: 100%;
+
+                .icon {
+                  width: 25%;
+                }
+            }
+          }
+          .prices {
+            p {
+                margin: 0px;
+                font-size: 12px;
+                color: red;
+            }
+            height: 30%;
+          }
+      }
+      
+    }
+    .visual {
+      width:240px;
+      height:100%;
+      position:absolute;
+      top:-24px;
+      left:24px; 
+      overflow:hidden;
+      border-radius:24px;
+      box-shadow:
+        1px 2px 6px fade(white,25%),
+        2px 6px 12px fade(black,25%);
+      img { 
+        height:110%
+      }
+    }
+    &:nth-of-type(odd) {
+      margin:0 0 0 120px;
+      border-radius:24px 24px 48px 24px;
+      padding:48px 308px 48px 60px;
+      .visual {
+        right:24px;
+        left:auto
+      }
+      .text-content a {
+        align-self:flex-start
+      }
+    }
+  
+  }
+  
+  article {
+    margin: 0px 5px;
+    width: calc(60vw + 248px);
+    max-width: 1168px;
+    min-width: 888px;
+    top: 50px;
+    position: relative;
+    display: inherit;
+  }
+  
+  body {
+    margin:0;
+    padding:96px;
+    font-size:21px;
+    background:#fff;
+    color:#000;
+    font-family: "gelica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } 
+
+  ::ng-deep .stepper-input {
+    .roomCount {
+      width: 46px;
+      margin: 0px 10px;
+      color: $deepOceanBlue;
+    }
+
+    .mat-mdc-fab .mdc-button__label, .mat-mdc-mini-fab .mdc-button__label {
+      font-size: 22px !important;
+    }
+
+    .mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+      --mdc-fab-container-color: white !important;
+    --mdc-fab-icon-color: $deepOceanBlue;
+    --mat-mdc-fab-color: $deepOceanBlue;
+    }
+  }
+
+  .unavailable-message {
+    color: $danger !important;
+  }
+  
+  @media all and (max-width:1100px) {
+    body {
+      padding:96px 48px 24px
+    }
+    article {
+      width:100%;
+      max-width:100%;
+      min-width:100%
+    }
+    section.card {
+      width:100%;
+      max-width:100%;
+      min-width:100%;
+      .text-content {
+        width:100%
+      }
+      &:nth-of-type(odd) {
+        margin:0
+      }
+    }
+  }
+  @media all and (max-width:720px) {
+    body {
+      padding:48px 24px 0
+    }
+    section.card {
+      margin:64px 0;
+      padding:88px 36px 36px;
+      flex-direction:column;
+      border-radius:24px;
+      &:nth-of-type(odd) {
+        padding:88px 36px 36px;
+        border-radius:24px;
+      } 
+      .text-content {
+        h3 { 
+          max-width:calc(100% - 150px);
+          font-size:1em
+        }
+        p,a {
+          font-size:0.8em
+        }
+      }
+      .visual,
+      &:nth-of-type(odd) .visual {
+        width:150px;
+        height:150px; 
+        right:16px;left:auto;
+        img {
+          width:100%;
+          height:auto
+        }
+      }
+    }
+  }
+
+  ::ng-deep .booking-container {
+    margin: 20px 0px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+
+    .transparent_layer {
+        background-color: rgb(255, 255, 255);
+        width: 98%;
+        margin-left: 14px;
+        mat-form-field {
+            margin: 15px;
+            .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+                display: none;
+            }
+
+            mat-label {
+                mat-icon {
+                    position: relative;
+                    height: 20px;
+                    width: 28px;
+                    font-size: 22px;
+                }
+
+                span {
+                    bottom: 3px;
+                    position: relative;
+                }
+            }
+            
+        }
+
+        .check_availability_button {
+            height: 55px !important;
+            bottom: 2px;
+            width: 222px;
+            font-size: 16px;
+        }
+
+        .button-success {
+          margin-left: 5px;
+        }
+    }
+}
+  
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+}

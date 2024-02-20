@@ -1,0 +1,69 @@
+<div class="booking-container">
+    <div class="transparent_layer">
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Check-In - Check-Out</mat-label>
+            <mat-date-range-input
+              [formGroup]="dates"
+              [rangePicker]="dateOnePicker"
+              [min]="currentDate">
+              <input matStartDate placeholder="Start date" formControlName="checkIn">
+              <input matEndDate placeholder="End date" formControlName="checkOut">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="dateOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #dateOnePicker></mat-date-range-picker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label><mat-icon>groups</mat-icon><span>Total Adult</span></mat-label>
+            <input matInput [(ngModel)]="adultValue" placeholder="" type="number" [min]="1" (blur)="checkAdultValue()">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label><mat-icon>child_care</mat-icon><span>Total Child</span></mat-label>
+            <input matInput [(ngModel)]="childValue" placeholder="" type="number" [min]="0" (blur)="checkChildValue()">
+          </mat-form-field>
+
+          <button class="check_availability_button button-primary" mat-raised-button (click)="checkAvailibility()">Check-Availability</button>
+          <button class="check_availability_button button-success" mat-raised-button [disabled]="checkBookingConditions()" (click)="openServices()">Book Now</button>
+    </div>
+</div>
+
+<article>
+    <section class="card" *ngFor="let room of roomTypes, let i=index">
+      <div class="text-content">
+        <div class="general-content">
+            <h3>{{room.type}} {{room.view}}</h3>
+            <p>{{room.description}}</p>  
+            <div class="stepper-input" *ngIf="checkRoomCount(room)">
+                <button mat-mini-fab (click)="changeCount('minus', i)">-</button>
+                <mat-form-field class="roomCount" appearance="outline">
+                    <input [min]="room.min" [max]="room.max" readonly matInput placeholder="Number of rooms" [(ngModel)]="room.selectedCount">
+                  </mat-form-field>
+                <button mat-mini-fab (click)="changeCount('plus', i)">+</button>
+            </div>
+            <div class="unavailable-message"  *ngIf="!checkRoomCount(room)">
+                <span>Not available</span>
+            </div>
+        </div>
+        <div class="services-price-content">
+            <div class="services">
+                <h3>Services</h3>
+            <mat-grid-list cols="4" rowHeight="4:4">
+                <mat-grid-tile *ngFor="let service of room.includedServices">
+                    <mat-icon>{{getIcon(service)}}</mat-icon>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+
+            <div class="prices">
+                <h3>€{{room.basePrice}}</h3>
+                <p>not inclusive of taxes<sup>*</sup></p>
+            </div>
+        </div>
+        
+      </div>
+      <div class="visual">
+        <img src="../../../assets/HotelImages/{{room.image}}" alt="" />
+      </div>
+    </section> 
+  </article>

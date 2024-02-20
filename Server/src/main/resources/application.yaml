@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:Mysql://server.c-kohn.lu:3306/c1SRH_SDP?noAccessToProcedureBodies=true
+    username: c1SRH
+    password: software#SRH2023
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+    format:
+      date-time: ISO
+
+
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  #JPA Settings
+  jpa.hibernate.ddl_auto: update
+
+#JWT
+jwt:
+  expiry-time: 3600000

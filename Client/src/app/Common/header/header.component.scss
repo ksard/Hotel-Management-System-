@@ -1,0 +1,58 @@
+@import '../../Styles/colors.scss';
+
+nav {
+    background: white;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    z-index: 1;
+    width: 100%;
+
+    .hotel-name {
+        margin: 3px;
+        font-size: 30px;
+        color: $deepOceanBlue;
+        width: 30%;
+        top: 10px;
+        position: relative;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .menuItems {
+      width: 70%;
+      list-style: none;
+      display: flex;
+      justify-content: right;
+      margin: 5px;
+      li {
+        margin: 10px;
+  
+        a {
+          text-decoration: none;
+          color: $deepOceanBlue;
+          font-size: 12px;
+          font-weight: 500;
+          transition: all 0.5s ease-in-out;
+          position: relative;
+          text-transform: uppercase;
+
+          &:hover {
+            color: #135286;
+            font-size: 13px;
+            transition: all 0.1s ease-in-out;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .text {
+    cursor: pointer;
+  }
+
+  .user-name {
+    bottom: 9px;
+    margin-left: 6px;
+    position: relative;
+  }

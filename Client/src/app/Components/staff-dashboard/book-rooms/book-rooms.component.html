@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="image_background">
+      <div class="tag_line_container">
+          <!-- <h1 class="tag_line">Spend Your Beautiful Moment</h1> -->
+      </div>
+      <div class="booking-container">
+          <div class="transparent_layer">
+              <mat-form-field class="example-form-field" appearance="outline">
+                  <mat-label>Check-In - Check-Out</mat-label>
+                  <mat-date-range-input
+                    [formGroup]="dates"
+                    [rangePicker]="dateOnePicker"
+                    [min]="currentDate">
+                    <input matStartDate placeholder="Start date" formControlName="checkIn">
+                    <input matEndDate placeholder="End date" formControlName="checkOut">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="dateOnePicker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #dateOnePicker></mat-date-range-picker>
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label><mat-icon>groups</mat-icon><span>Total Adult</span></mat-label>
+                  <input matInput [(ngModel)]="adultValue" placeholder="" type="number" [min]="1" (blur)="checkAdultValue()">
+                </mat-form-field>
+  
+                <mat-form-field appearance="outline">
+                  <mat-label><mat-icon>child_care</mat-icon><span>Total Child</span></mat-label>
+                  <input matInput [(ngModel)]="childValue" placeholder="" type="number" [min]="0" (blur)="checkChildValue()">
+                </mat-form-field>
+  
+                <button class="check_availability_button button-primary" mat-raised-button (click)="checkAvailibility()">Check-Availability</button>
+          </div>
+      </div>
+  </div>
+  </div>
+  
+  

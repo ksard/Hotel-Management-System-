@@ -1,0 +1,75 @@
+@import '../../Styles/colors.scss';
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+  h1{
+    font-size: 50px;
+    margin-top: 60px;
+  }
+  
+  .head {
+    color: $deepOceanBlue;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  section {
+    margin: 20px;
+  }
+  
+  h2 {
+    color: $deepOceanBlue;
+    font-size: 35px;
+    text-align: center;
+  }
+  
+  p {
+    color: #555;
+    font-size: 25px;
+    line-height: 30px;
+  }
+  
+  .para-left{
+    max-width: 40%;
+    float: left;
+  }
+  
+  .image-right {
+    float: right;
+    float: right;
+    border-radius: 20px;
+    
+  }
+  
+  .image-right img {
+    max-width: 60%; /* Adjust as needed */
+    float: right;
+    border-radius: 20px;
+ 
+  }
+
+  .para-right{
+    max-width: 40%;
+    float: right;
+  }
+  
+  .image-left {
+    float: left;
+    border-radius: 20px;
+    
+  }
+  
+  .image-left img {
+    max-width: 60%; /* Adjust as needed */
+    border-radius: 20px;
+ 
+  }
+
+  .combi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+  }

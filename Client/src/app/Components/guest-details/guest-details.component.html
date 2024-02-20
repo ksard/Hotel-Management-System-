@@ -1,0 +1,145 @@
+<div class="container">
+    <h1 class="title-tag" mat-dialog-title>Guest Details</h1>
+<div mat-dialog-content>
+  
+<form class="primary-guest-form" [formGroup]="reactiveForm" #form="ngForm">
+  <div class="inline-elements">
+    <h3 [ngStyle]="{'width' : isPrimaryGuest ? '68%' : '75%'}">Primary Guest Details</h3>
+    <mat-checkbox *ngIf="loggedInUser.role[0].authority !== 'employee'" class="example-margin" [(ngModel)]="isPrimaryGuest" (change)="togglePrimaryGuest()">Are you the Primary Guest?</mat-checkbox>
+  </div>
+  
+  <ng-container *ngIf="!isPrimaryGuest">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name  </mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+    
+    
+      <mat-form-field appearance="outline">
+          <mat-label>Last Name  </mat-label>
+          <input matInput formControlName="lastName">
+      </mat-form-field>
+    
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Email  </mat-label>
+          <input matInput type="email" formControlName="email">
+      </mat-form-field>
+    
+    
+      <mat-form-field appearance="outline" class="dob">
+        <mat-label>Date Of Birth  </mat-label>
+        <input matInput [max]="maxDob" [matDatepicker]="picker" formControlName="dob">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+    <div class="row">
+      <mat-form-field appearance="outline" class="gender">
+        <mat-label>Gender  </mat-label>
+        <mat-select formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Others</mat-option>
+        </mat-select>
+    </mat-form-field>
+  
+  
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Telephone  </mat-label>
+        <span matPrefix>+49 &nbsp;</span>
+        <input type="text"  pattern="[0-9]{11}" (input)="onInputChange($event)" matInput placeholder="123-1234567" formControlName="phoneNo">
+            <mat-error  *ngIf="reactiveForm.controls['phoneNo'].errors?.['required']">
+                This field is required
+            </mat-error>
+            <mat-error  *ngIf="reactiveForm.controls['phoneNo'].errors?.['pattern']">
+                Phone no should be of 11 digits
+            </mat-error>
+    </mat-form-field>
+  
+    <!-- Identity Type -->
+    <mat-form-field appearance="outline">
+      <mat-label>Identity Type:</mat-label>
+      <mat-select formControlName="identityProofType">
+        <mat-option value="DL">Driver's License</mat-option>
+        <mat-option value="passport">Passport</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- Identity Proof -->
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Identity Proof:</mat-label>
+      <input matInput type="text" formControlName="identityProof">
+    </mat-form-field>
+    </div>
+  
+    <mat-form-field class="address-full-width" appearance="outline">
+        <mat-label>Address  </mat-label>
+        <textarea matInput formControlName="address"></textarea>
+    </mat-form-field>
+  </ng-container>
+</form>
+
+<!-- Additional Guests Template -->
+<form class="additional-guest-form">
+  <div class="form-blocks" *ngFor="let adult of adults; let i = index">
+    <h3>Guest {{ i + 1 }} Details</h3>
+
+    <div class="row">
+    <!-- First Name -->
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>First Name:</mat-label>
+      <input matInput type="text" name="firstName{{ i }}" [(ngModel)]="adult.firstName">
+    </mat-form-field>
+
+    <!-- Last Name -->
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Last Name:</mat-label>
+      <input matInput type="text" type="text" name="lastName{{ i }}" [(ngModel)]="adult.lastName" required>
+    </mat-form-field>
+
+    <!-- DOB -->
+    <mat-form-field appearance="outline">
+      <input matInput [max]="maxDob" [matDatepicker]="dobPicker" placeholder="Date of Birth" name="dob{{ i }}" [(ngModel)]="adult.dob" required>
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+    </div>
+
+    <div class="row">
+      <!-- Gender -->
+    <mat-form-field appearance="outline">
+      <mat-label>Gender</mat-label>
+      <mat-select name="gender{{ i }}" [(ngModel)]="adult.gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Identity Type -->
+    <mat-form-field appearance="outline">
+      <mat-label>Identity Type:</mat-label>
+      <mat-select name="identityProofType{{ i }}" [(ngModel)]="adult.identityProofType" required>
+        <mat-option value="DL">Driver's License</mat-option>
+        <mat-option value="passport">Passport</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Identity Proof -->
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Identity Proof:</mat-label>
+      <input matInput type="text" name="identityProof{{ i }}" [(ngModel)]="adult.identityProof" required>
+    </mat-form-field>
+    </div>
+  </div>
+</form>
+  
+</div>
+<div mat-dialog-actions class="action-buttons">
+  <button class="button-secondary" mat-raised-button (click)="onNoClick()">Back</button>
+  <button class="button-success" mat-raised-button (click)="validateAndPay()" cdkFocusInitial>Proceed</button>
+</div>
+</div>

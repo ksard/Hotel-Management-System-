@@ -1,0 +1,107 @@
+<div class="container">
+    <h1 mat-dialog-title>Welcome to Blue Paradise</h1>
+<div mat-dialog-content>
+  <p>Enter the mandatory fields</p>
+  <form class="register-form" [formGroup]="reactiveForm" #form="ngForm">
+    <div class="section-name">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name  </mat-label>
+            <input matInput formControlName="firstName">
+            <mat-error  *ngIf="reactiveForm.controls['firstName'].errors?.['required']">
+                This field is required
+            </mat-error>
+         </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name  </mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error  *ngIf="reactiveForm.controls['lastName'].errors?.['required']">
+                This field is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="section-email">
+        <mat-form-field appearance="outline">
+            <mat-label>Email  </mat-label>
+            <input matInput type="email" formControlName="email">
+                <mat-error  *ngIf="reactiveForm.controls['email'].errors?.['required']">
+                    This field is required
+                </mat-error>
+                <mat-error  *ngIf="!reactiveForm.controls['email'].errors?.['required'] && reactiveForm.controls['email'].errors?.['emailValidator']">
+                    Invalid email format
+                </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="section-dob-gender">
+        <mat-form-field appearance="outline" class="dob">
+            <mat-label>Date Of Birth  </mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDob" formControlName="dob">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error  *ngIf="reactiveForm.controls['dob'].errors?.['required']">
+                This field is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="gender">
+            <mat-label>Gender  </mat-label>
+            <mat-select formControlName="gender">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              <mat-option value="other">Others</mat-option>
+            </mat-select>
+            <mat-error  *ngIf="reactiveForm.controls['gender'].errors?.['required']">
+                This field is required
+            </mat-error>
+          </mat-form-field>
+    </div>
+
+    <div class="section-phNumber">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Telephone  </mat-label>
+            <span matPrefix>+49 &nbsp;</span>
+            <input type="text"  pattern="[0-9]{11}" (input)="onInputChange($event)" matInput placeholder="123-1234567" formControlName="phoneNo">
+            <mat-error  *ngIf="reactiveForm.controls['phoneNo'].errors?.['required']">
+                This field is required
+            </mat-error>
+            <mat-error  *ngIf="reactiveForm.controls['phoneNo'].errors?.['pattern']">
+                Phone no should be of 11 digits
+            </mat-error>
+          </mat-form-field>
+    </div>
+
+    <div class="section-address">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Address  </mat-label>
+            <textarea matInput formControlName="address"></textarea>
+            <mat-error  *ngIf="reactiveForm.controls['address'].errors?.['required']">
+                This field is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="section-address">
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your new password  </mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error  *ngIf="reactiveForm.controls['password'].errors?.['required']">
+                This field is required
+            </mat-error>
+         </mat-form-field>
+    </div>
+    <div class="section-address">
+        <mat-form-field appearance="outline">
+            <mat-label>Re-Enter your password  </mat-label>
+            <input type="password" formControlName="confirmPassword" matInput (input)="matchPassword($event)">
+            <mat-error  *ngIf="reactiveForm.controls['confirmPassword'].errors?.['required']">
+                This field is required
+            </mat-error>
+         </mat-form-field>
+    </div>
+    </form>
+  
+</div>
+<div mat-dialog-actions class="action-buttons">
+  <button class="button-secondary" mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button class="button-success" mat-raised-button (click)="signIn()" [disabled]="reactiveForm.invalid || !passwordCheck" cdkFocusInitial>Register</button>
+</div>
+</div>

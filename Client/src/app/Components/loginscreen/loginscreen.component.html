@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Welcome to Blue Paradise</h1>
+<div mat-dialog-content>
+  <p>Please login using your credentials</p>
+  <form class="login-form" [formGroup]="loginCreds" #form="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username: </mat-label>
+      <input matInput type="email" formControlName="email">
+          <mat-error  *ngIf="loginCreds.controls['email'].errors?.['required']">
+              This field is required
+          </mat-error>
+          <mat-error  *ngIf="!loginCreds.controls['email'].errors?.['required'] && loginCreds.controls['email'].errors?.['emailValidator']">
+              Invalid email format
+          </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password  </mat-label>
+      <input type="password" matInput formControlName="password">
+      <mat-error  *ngIf="loginCreds.controls['password'].errors?.['required']">
+          This field is required
+      </mat-error>
+   </mat-form-field>
+    </form>
+    <a class="register-link" (click)="goToRegister()">New User? Click here to Register</a>
+  
+</div>
+<div mat-dialog-actions class="action-buttons">
+  <button class="button-secondary" mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button class="button-success" mat-raised-button [disabled]="loginCreds.invalid" (click)="signIn()" cdkFocusInitial>Sign-In</button>
+</div>

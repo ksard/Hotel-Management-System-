@@ -1,0 +1,15 @@
+<nav>
+    <p class="hotel-name" (click)="navigateToHome()">Blue Paradise</p>
+    <ul class="menuItems">
+      <li><a class="text" (click)="openAboutUs()" data-item='About Us'>About Us</a></li>
+      <li *ngIf="!user"><a class="text" (click)="openLoginDialog()" data-item='Sign-In'>Sign-In</a></li>
+      <li *ngIf="!user"><a class="text" (click)="openRegisterDialog()" data-item='Register'>Register</a></li>
+      <li *ngIf="user">
+        <span class="material-symbols-outlined">
+        account_circle
+        </span>
+        <span class="text user-name">{{user?.sub}}</span>
+      </li>
+      <li *ngIf="user"><a class="text" (click)="logout()">Logout</a></li>
+    </ul>
+</nav>

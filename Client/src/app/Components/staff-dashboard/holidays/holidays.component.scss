@@ -1,0 +1,133 @@
+@import '/src/app/Styles/buttons.scss';
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    top: 10px;
+    position: relative;
+  }
+  
+
+/* Reduce the width of the 'dates' column */
+.mat-column-dates {
+    max-width: 250px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap;
+  }
+  
+  /* Reduce the font size of the header cell */
+  .mat-header-cell.mat-column-dates {
+    font-size: 12px; /* Adjust the font size as needed */
+  }
+  
+  /* Optional: Adjust the font size of the content cells */
+  .mat-cell.mat-column-dates {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+
+  .mat-column-room-type {
+    max-width: 85px;
+    text-align: center;
+  }
+
+  .mat-column-surge_fees {
+    max-width: 125px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap;
+  }
+  
+  /* Reduce the font size of the header cell */
+  .mat-header-cell.mat-column-surge_fees {
+    font-size: 12px; /* Adjust the font size as needed */
+  }
+  
+  /* Optional: Adjust the font size of the content cells */
+  .mat-cell.mat-column-surge_fees {
+    font-size: 14px; /* Adjust the font size as needed */
+  }
+
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+    
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    display: flex;
+    justify-content: right;
+    margin-top: 16px;
+  }
+  .example-button-row button {
+    margin: 0 8px; 
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .table1{
+    left: 17%;
+    width: 68%;
+    position: relative; 
+    
+  }
+  
+
+  .container {
+    display: flex;
+    background-image: url('../../../../assets/HotelImages/Image\ 9.jpg');
+    background-size: 100% 100%;
+    width: 100%;
+    overflow: hidden;
+    
+  }
+
+  .filter{
+    background-color: white;
+    padding-top: 20px;
+    z-index: 999;
+    margin-top: 5px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+  overflow: hidden; /* Ensure content doesn't overflow rounded corners */
+  border: 1px solid #ccc;
+  }
+
+  .table-container {
+    max-height: 450px; /* Adjust the height as needed */
+    overflow-y: auto;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+  border: 1px solid #ccc;
+    
+  }
+  
+  /* Optional: Adjust the width of the table to fit the container */
+  .mat-table {
+    width: 100%;
+  }
+  
+  /* Optional: Adjust the padding of the table cells */
+  .mat-cell,
+  .mat-header-cell {
+    padding: 8px;
+  }

@@ -1,0 +1,39 @@
+<body>
+    <form class="payment-form" [formGroup]="paymentForm">
+        <h1>Secure Payment</h1>
+
+        <div class="payment-options">
+            <label for="payment-mode">Choose Payment Mode:</label>
+            <select id="payment-mode" formControlName="paymentType" (change)="togglePaymentType($event)">
+                <option value="credit-debit" selected >Credit Card / Debit Card</option>
+                <option value="net-banking">Net Banking</option>
+            </select>
+        </div>
+
+        <div class="credit-debit-section" *ngIf="payment_mode == 'credit-debit'">
+            <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="number" formControlName="creditCardNo" id="card-number" placeholder="Enter your card number">
+            </div>
+    
+            <div class="form-group">
+                <label for="expiration-date">Expiration Date</label>
+                <input type="month" min="{{minExpiryDate}}" formControlName="expiryDate" id="expiration-date">
+            </div>
+    
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="number" formControlName="cvv" id="cvv" placeholder="Enter CVV">
+            </div>
+        </div>
+
+        <div class="net-banking-section" *ngIf="payment_mode == 'net-banking'">
+            <div class="form-group" id="iban-input">
+                <label for="iban">IBAN</label>
+                <input type="text" formControlName="iban" id="iban" placeholder="Enter IBAN" title="Please enter a valid IBAN">
+            </div>
+        </div>
+
+        <button class="pay-button" [disabled]="paymentForm.invalid" (click)="makePayment()">Pay Now</button>
+    </form>
+</body>
