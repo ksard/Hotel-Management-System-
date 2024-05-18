@@ -13,7 +13,7 @@ Ensure you have the following installed on your machine:
 ## Getting Started
 1. Clone the Repository:
 ```
-git clone https://gitlab.com/cris.kohn.2207/software-development-practice.git
+git clone https://github.com/ksard/Hotel-Management-System-.git
 ```
 2. Navigate to the Project Directory and open the project in IntelliJ.
 
